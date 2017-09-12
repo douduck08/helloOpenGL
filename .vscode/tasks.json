@@ -1,19 +1,38 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-    "version": "0.1.0",
+    "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "clang++",
-            "command": "clang++",
-            "isShellCommand": true,
+            "taskName": "compile",
+            "command": "clang",
+            "type": "shell",
             "args": [
-                // "src/helloworld.cpp",
-                "src/helloOpenGL.cpp",
+                "${file}",
+                "-o", "${workspaceRoot}/builds/${fileBasenameNoExtension}", // output file
                 "-std=c++11",
-                "-g"
+                "-framework", "GLUT", "-framework", "OpenGL",
+                "-g" // debugger
             ],
-            "showOutput": "always"
-        }    
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "/"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$", // 正则表达式，用于描述在“问题”栏中显示的信息。
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+       }    
     ]
 }
