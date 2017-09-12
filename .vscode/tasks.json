@@ -3,13 +3,14 @@
     // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
+        // compile_osx
         {
-            "taskName": "compile",
+            "taskName": "compile_osx",
             "command": "clang",
             "type": "shell",
             "args": [
                 "${file}",
-                "-o", "${workspaceRoot}/builds/${fileBasenameNoExtension}", // output file
+                "-o", "${workspaceRoot}\/builds\/a.out", // output file
                 "-std=c++11",
                 "-framework", "GLUT", "-framework", "OpenGL",
                 "-g" // debugger
@@ -25,7 +26,7 @@
                     "/"
                 ],
                 "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$", // 正则表达式，用于描述在“问题”栏中显示的信息。
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
                     "file": 1,
                     "line": 2,
                     "column": 3,
@@ -33,6 +34,100 @@
                     "message": 5
                 }
             }
-       }    
+        },
+        // compile_windows
+        {
+            "taskName": "compile_windows",
+            "command": "g++",
+            "type": "process", // windows
+            "args": [
+                "${file}",
+                "-o", "${workspaceRoot}\\builds\\a.out", // output file
+                "-std=c++11",
+                // "-framework", "GLUT", "-framework", "OpenGL",
+                "-g" // debugger
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "/"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        // build_osx
+        {
+            "taskName": "build_osx",
+            "command": "clang",
+            "type": "shell",
+            "args": [
+                "${file}",
+                "-o", "${workspaceRoot}\/builds\/${fileBasenameNoExtension}", // output file
+                "-std=c++11",
+                "-framework", "GLUT", "-framework", "OpenGL"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "/"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        // build_windows
+        {
+            "taskName": "build_windows",
+            "command": "g++",
+            "type": "process", // windows
+            "args": [
+                "${file}",
+                "-o", "${workspaceRoot}\\builds\\${fileBasenameNoExtension}.exe", // output file
+                "-std=c++11"
+                // "-framework", "GLUT", "-framework", "OpenGL",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "/"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        }
     ]
 }

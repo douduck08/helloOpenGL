@@ -5,14 +5,21 @@
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/a.out",
-            "args": [],
             "stopAtEntry": false,
+            "program": "${workspaceRoot}/builds/a.out",
             "cwd": "${workspaceRoot}",
-            "environment": [],
             "externalConsole": true,
             "MIMode": "lldb",
-            "preLaunchTask": "compile"
+            "windows": {
+                "args": [],
+                "environment": [],
+                "preLaunchTask": "compile_windows"
+            },
+            "osx": {
+                "args": [],
+                "environment": [],
+                "preLaunchTask": "compile_osx"
+            }
         }
     ]
 }

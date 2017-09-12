@@ -49,17 +49,28 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include",
+                "C:/Program Files/LLVM/include/c++/4.8.2",
+                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++",
+                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++/x86_64-w64-mingw32",
+                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++/backward",
+                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include",
+                "C:/Program Files/LLVM/include",
+                "C:/Program Files/LLVM/x86_64-w64-mingw32/include",
+                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include-fixed",
                 "${workspaceRoot}"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE"
             ],
-            "intelliSenseMode": "msvc-x64",
+            "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
-                    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
+                    "C:/Program Files/LLVM/include/c++/4.8.2",
+                    "C:/Program Files/LLVM/x86_64-w64-mingw32/include",
+                    "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include",
+                    "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include-fixed",
+                    "C:/Program Files/LLVM/include/*",
                     "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
