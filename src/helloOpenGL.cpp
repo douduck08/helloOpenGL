@@ -7,7 +7,7 @@
 /* This program was requested by Patrick Earl; hopefully someone else
    will write the equivalent Direct3D immediate mode program. */
 
-#include <gl/glut.h>
+#include <glut/glut.h>
 
 GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */
 GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0}; /* Infinite light location. */

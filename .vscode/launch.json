@@ -2,11 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(lldb/gdb) Launch",
+            "name": "C++ Launch",
             "type": "cppdbg",
             "request": "launch",
-            "stopAtEntry": false,
             "program": "${workspaceRoot}/builds/a.out",
+            "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "externalConsole": true,
             "windows": {

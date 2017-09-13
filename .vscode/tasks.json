@@ -6,7 +6,7 @@
         // compile_osx
         {
             "taskName": "compile_osx",
-            "command": "clang",
+            "command": "clang++",
             "type": "shell",
             "args": [
                 "${file}",
@@ -70,7 +70,7 @@
         // build_osx
         {
             "taskName": "build_osx",
-            "command": "clang",
+            "command": "clang++",
             "type": "shell",
             "args": [
                 "${file}",
