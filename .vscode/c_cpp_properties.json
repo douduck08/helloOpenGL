@@ -8,7 +8,6 @@
                 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include",
                 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
                 "/usr/include",
-                "/System/Library/Frameworks",
                 "${workspaceRoot}"
             ],
             "defines": [],
@@ -20,12 +19,15 @@
                     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include",
                     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
                     "/usr/include",
-                    "/System/Library/Frameworks",
                     "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ]
         },
         {
             "name": "Linux",
@@ -49,14 +51,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:/Program Files/LLVM/include/c++/4.8.2",
-                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++",
-                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++/x86_64-w64-mingw32",
-                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++/backward",
-                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include",
-                "C:/Program Files/LLVM/include",
-                "C:/Program Files/LLVM/x86_64-w64-mingw32/include",
-                "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include-fixed",
+                "C:/Program Files/LLVM/include/c++",
                 "${workspaceRoot}"
             ],
             "defines": [
@@ -66,11 +61,7 @@
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
-                    "C:/Program Files/LLVM/include/c++/4.8.2",
-                    "C:/Program Files/LLVM/x86_64-w64-mingw32/include",
-                    "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include",
-                    "C:/Program Files/LLVM/lib/gcc/x86_64-w64-mingw32/7.1.0/include-fixed",
-                    "C:/Program Files/LLVM/include/*",
+                    "C:/Program Files/LLVM/include/c++",
                     "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
@@ -78,5 +69,5 @@
             }
         }
     ],
-    "version": 2
+    "version": 3
 }
