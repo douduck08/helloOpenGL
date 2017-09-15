@@ -1,52 +1,67 @@
-#include <GL/glew.h>    // include GLEW and new version of GL on Windows
-#define GLFW_DLL
-#include <GLFW/glfw3.h> // GLFW helper library
-#include <stdio.h>
+#include <iostream>
 
-// Ref from: http://antongerdelan.net/opengl/hellotriangle.html
-int main()
+#define GLEW_STATIC
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+const GLint WIDTH = 800, HEIGHT = 600;
+int main( )
 {
-    // start GL context and O/S window using the GLFW helper library
-    if (!glfwInit())
+    // Init GLFW
+    glfwInit( );
+    
+    // Set all the required options for GLFW
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 3 );
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 3 );
+    glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
+    glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
+    glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
+    
+    // Create a GLFWwindow object that we can use for GLFW's functions
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "LearnOpenGL", nullptr, nullptr );
+    
+    int screenWidth, screenHeight;
+    glfwGetFramebufferSize( window, &screenWidth, &screenHeight );
+    
+    if ( nullptr == window )
     {
-        fprintf(stderr, "ERROR: could not start GLFW3\n");
-        return 1;
+        std::cout << "Failed to create GLFW window" << std::endl;
+        glfwTerminate( );
+        
+        return EXIT_FAILURE;
     }
-
-    // uncomment these lines if on Apple OS X
-    /*
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    // */
-
-    GLFWwindow *window = glfwCreateWindow(640, 480, "Hello Triangle", NULL, NULL);
-    if (!window)
-    {
-        fprintf(stderr, "ERROR: could not open window with GLFW3\n");
-        glfwTerminate();
-        return 1;
-    }
-    glfwMakeContextCurrent(window);
-
-    // start GLEW extension handler
+    
+    glfwMakeContextCurrent( window );
+    
+    // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
     glewExperimental = GL_TRUE;
-    glewInit();
-
-    // get version info
-    const GLubyte *renderer = glGetString(GL_RENDERER); // get renderer string
-    const GLubyte *version = glGetString(GL_VERSION);   // version as a string
-    printf("Renderer: %s\n", renderer);
-    printf("OpenGL version supported %s\n", version);
-
-    // tell GL to only draw onto a pixel if the shape is closer to the viewer
-    glEnable(GL_DEPTH_TEST); // enable depth-testing
-    glDepthFunc(GL_LESS);    // depth-testing interprets a smaller value as "closer"
-
-    /* OTHER STUFF GOES HERE NEXT */
-
-    // close GL context and any other GLFW resources
-    glfwTerminate();
-    return 0;
+    // Initialize GLEW to setup the OpenGL Function pointers
+    if ( GLEW_OK != glewInit( ) )
+    {
+        std::cout << "Failed to initialize GLEW" << std::endl;
+        return EXIT_FAILURE;
+    }
+    
+    // Define the viewport dimensions
+    glViewport( 0, 0, screenWidth, screenHeight );
+    
+    // Game loop
+    while ( !glfwWindowShouldClose( window ) )
+    {
+        // Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
+        glfwPollEvents( );
+        
+        // Render
+        // Clear the colorbuffer
+        glClearColor( 0.2f, 0.3f, 0.3f, 1.0f );
+        glClear( GL_COLOR_BUFFER_BIT );
+        
+        // Swap the screen buffers
+        glfwSwapBuffers( window );
+    }
+    
+    // Terminate GLFW, clearing any resources allocated by GLFW.
+    glfwTerminate( );
+    
+    return EXIT_SUCCESS;
 }

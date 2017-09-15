@@ -12,7 +12,8 @@
                 "${file}",
                 "-o", "${workspaceRoot}\/builds\/a.out", // output file
                 "-std=c++11",
-                "-framework", "GLUT", "-framework", "OpenGL",
+                "-framework", "OpenGL",
+                "-I", "/usr/local/include",
                 "-g" // debugger
             ],
             "group": {
