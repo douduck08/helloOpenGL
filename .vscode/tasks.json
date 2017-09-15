@@ -12,8 +12,11 @@
                 "${file}",
                 "-o", "${workspaceRoot}\/builds\/a.out", // output file
                 "-std=c++11",
-                "-framework", "OpenGL",
+                "-L", "/usr/local/lib",
+                "-lglfw",
+                "-lglew",
                 "-I", "/usr/local/include",
+                "-framework", "OpenGL",
                 "-g" // debugger
             ],
             "group": {
